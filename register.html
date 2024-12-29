@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊 - Boolin Store</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html"></a>Boolin Store</h1>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1>註冊帳戶</h1>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" placeholder="輸入您的姓名" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">年齡</label>
+                    <input type="number" id="age" name="age" placeholder="輸入您的年齡" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">電子郵件</label>
+                    <input type="email" id="email" name="email" placeholder="輸入您的電子郵件" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" name="password" placeholder="請輸入您的密碼" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">確認密碼</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="再次確認您的密碼" required>
+                </div>
+                <button type="submit" class="login-submit-btn">註冊</button>
+                <p>已經有帳戶？<a href="login.html">登入</a></p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Boolin. All Rights Reserved.</p>
+    </footer>
+
+    <script src="boolin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const registerForm = document.getElementById('register-form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+
+                    if (password !== confirmPassword) {
+                        alert('確認密碼必須與密碼一致！');
+                    } else {
+                        const name = document.getElementById('name').value.trim();
+                        const age = document.getElementById('age').value.trim();
+                        const email = document.getElementById('email').value.trim();
+
+                        if (name && age && email) {
+                            alert('註冊成功！');
+                            window.location.href = 'login.html';
+                        } else {
+                            alert('請填寫所有欄位！');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

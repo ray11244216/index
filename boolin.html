@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolin Store</title>
+    <link rel="stylesheet" href="boolin.css">
+</head>
+<body>
+    <div class="marquee-container">
+        <div class="marquee">新店開幕，立即享受全館滿 2999 免運 & 滿 5000 折 500！快來加入 Boolin 會員領取 $100 購物金！</div>
+    </div>
+
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html"><img src="images/logo.jpg" alt="Logo"></a>Boolin Store</h1>
+        </div>
+        <nav>
+            <div class="search-bar">
+                <input type="text" placeholder="搜尋">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="user-actions">
+                <button class="login-btn">登入</button>
+                <a href="car.html"><button class="cart-btn">🛒 購物車</button></a>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <h2>球鞋 | SNEAKER</h2>
+            <div class="sort">
+                排列方式：
+                <select id="sort-options">
+                    <option value="default">預設</option>
+                    <option value="price">價格由高至低</option>
+                    <option value="price-asc">價格由低至高</option>
+                </select>
+            </div>
+            <div id="product-list" class="product-list">
+                <div class="product" data-price="3880">
+                    <img src="images/dunkblack.jpg" alt="Nike SB Dunk">
+                    <a href="1.html"><h3>Nike Dunk Low White Black</h3></a>
+                    <p>$ 3880</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="2480">
+                    <img src="images/airforceW.jpg" alt="Nike Air Force 1 '07 WHITE">
+                    <a href="2.html"><h3>Nike Air Force 1 '07 White</h3></a>
+                    <p>$ 2480</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="3680">
+                    <img src="images/y1.jpg" alt="Adidas Yeezy Foam Runner Mx Granite">
+                    <a href="8.html"><h3>Adidas Yeezy Foam Runner Mx Granite</h3></a>
+                    <p>$ 3680</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="3200">
+                    <img src="images/aj1.jpg" alt="Nike Air Jordan 1 Low">
+                    <a href="4.html"><h3>Nike Air Jordan 1 Low Blue</h3></a>
+                    <p>$ 3200</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="7860">
+                    <img src="images/GD1.jpg" alt="GD">
+                    <a href="3.html"><h3>Nike Air Force 1 GD</h3></a>
+                    <p>$ 7860</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="4680">
+                    <img src="images/r1.jpg" alt="1906r">
+                    <a href="7.html"><h3>New Balance 1906R Black Silver</h3></a>
+                    <p>$ 4680</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="4800">
+                    <img src="images/z1.jpg" alt="Nike Zoom Vomero 5">
+                    <a href="5.html"><h3>Nike Zoom Vomero 5</h3></a>
+                    <p>$ 4800</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="2380">
+                    <img src="images/5501.jpg" alt="New Balance 550 White Black">
+                    <a href="6.html"><h3>New Balance 550 White Black</h3></a>
+                    <p>$ 2380</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="4080">
+                    <img src="images/a1.jpg" alt="Asics Gel-Kahana Tr V4 White Silver">
+                    <a href="9.html"><h3>Asics Gel-Kahana Tr V4 White Silver</h3></a>
+                    <p> $ 4080</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="2580">
+                    <img src="images/p1.jpg" alt="Nike P-6000 Flat Pewter">
+                    <a href="10.html"><h3>Nike P-6000 Flat Pewter</h3></a>
+                    <p> $ 2580</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="2480">
+                    <img src="images/b1.jpg" alt="Nike Air Force 1 '07 Black">
+                    <a href="11.html"><h3>Nike Air Force 1 '07 Black</h3></a>
+                    <p> $ 2480</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="16800">
+                    <img src="images/t1.jpg" alt="Travis Scott x AJ1 Low OG">
+                    <a href="12.html"><h3>Nike Travis Scott x AJ1 Low OG</h3></a>
+                    <p> $ 16800</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="3680">
+                    <img src="images/j1.jpg" alt="Air Jordan 1 Low W Wolf Grey White">
+                    <a href="13.html"><h3>Nike Air Jordan 1 Low W Wolf Grey White</h3></a>
+                    <p> $ 3680</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="9880">
+                    <img src="images/k1.jpg" alt="Nike Zoom Kobe 5 Protro X-Ray">
+                    <a href="14.html"><h3>Nike Zoom Kobe 5 Protro X-Ray</h3></a>
+                    <p> $ 9880</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-price="3680">
+                    <img src="images/ja1.jpg" alt="Nike Ja 2 Christmas Tree Topper">
+                    <a href="15.html"><h3>Nike Ja 2 Christmas Tree Topper</h3></a>
+                    <p> $ 3680</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="discount">
+            <h3>使用優惠碼</h3>
+            <input type="text" id="discount-code" placeholder="輸入優惠碼">
+            <button id="apply-discount">套用</button>
+        </section>
+    </main>
+
+    <button id="back-to-top" title="Back to top">↑</button>
+    
+    <footer>
+        <p>&copy; 2024 Boolin. All Rights Reserved.</p>
+        <nav>
+            <a href="https://maps.app.goo.gl/CempEkPiWn51Lu1T7">隱私政策</a> | <a href="https://maps.app.goo.gl/CempEkPiWn51Lu1T7">服務條款</a> | <a href="https://maps.app.goo.gl/CempEkPiWn51Lu1T7">聯絡我們</a>
+        </nav>
+    </footer>
+
+    <script src="boolin.js"></script>
+</body>
+</html>

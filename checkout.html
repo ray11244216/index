@@ -1,0 +1,128 @@
+<!-- checkout.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結帳 | Boolin Store</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Boolin Store</h1>
+        </div>
+    </header>
+
+    <main class="cart-container">
+        <h2>結帳資訊</h2>
+        <form id="checkout-form">
+            <div class="product-list">
+                <h3>商品清單</h3>
+                <ul id="product-list-items">
+                    <!-- 商品清單會在這裡動態渲染 -->
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">住址</label>
+                <textarea id="address" name="address" placeholder="請輸入您的住址" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">聯絡電話</label>
+                <input type="tel" id="phone" name="phone" placeholder="請輸入您的聯絡電話" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-method">付款方式</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>選擇付款方式</option>
+                    <option value="cod">貨到付款</option>
+                    <option value="linepay">Line Pay</option>
+                    <option value="credit-card">信用卡</option>
+                    <option value="atm-transfer">ATM 轉帳</option>
+                </select>
+            </div>
+
+            <div class="total-amount">
+                總金額：<span id="final-total-amount">$0</span>
+            </div>
+
+            <button id="continue-shopping-btn" onclick="window.location.href='boolin.html'">繼續選購</button>
+
+            <button type="submit" id="place-order-btn">提交訂單</button>
+        </form>
+
+        <div id="thank-you-message">
+            <h3>感謝購買！</h3>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Boolin. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const productListContainer = document.getElementById("product-list-items");
+            const totalAmountElement = document.getElementById("final-total-amount");
+            const thankYouMessage = document.getElementById("thank-you-message");
+            const checkoutForm = document.getElementById("checkout-form");
+
+            function formatCurrency(amount) {
+                return `$${Math.floor(amount)}`; // 僅顯示整數部分
+            }
+
+            function renderCart() {
+                let totalAmount = 0;
+                productListContainer.innerHTML = "";  // 清空商品清單
+
+                if (cart.length === 0) {
+                    productListContainer.innerHTML = "<li>您的購物車是空的</li>";
+                    totalAmountElement.textContent = formatCurrency(0);
+                    return;
+                }
+
+                cart.forEach(function (item) {
+                    const listItem = document.createElement("li");
+
+                    const subtotal = item.price * item.quantity;
+                    totalAmount += subtotal;
+
+                    listItem.innerHTML = `
+                        ${item.name} <span class="price">${formatCurrency(item.price)}</span> x ${item.quantity} = ${formatCurrency(subtotal)}
+                    `;
+                    productListContainer.appendChild(listItem);
+                });
+
+                totalAmountElement.textContent = formatCurrency(totalAmount);
+            }
+
+            renderCart(); // 渲染購物車
+
+            checkoutForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // 防止表單重新載入頁面
+
+                // 顯示感謝訊息並隱藏結帳表單
+                checkoutForm.style.display = "none";
+                thankYouMessage.style.display = "block";
+
+                // 清除購物車資料
+                localStorage.removeItem("cart");
+
+                // 等待幾秒鐘後跳轉回首頁
+                setTimeout(function () {
+                    window.location.href = "index.html"; // 跳轉回首頁
+                }, 2000); // 延遲 2 秒後跳轉
+            });
+        });
+    </script>
+</body>
+</html>

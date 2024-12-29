@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f9f5;
+}
+
+header {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .cart-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+header .cart-btn:hover {
+    background-color: #27ae60;
+}
+
+.cart-section {
+    padding: 20px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.cart-section h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2ecc71;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.item-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.item-total {
+    text-align: right;
+    flex-basis: 150px;
+}
+
+.item-total p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #27ae60;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cart-summary {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.cart-summary p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #000000;
+}
+
+#checkout-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#checkout-btn:hover {
+    background-color: #27ae60;
+}
+
+#checkout-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-info {
+        padding-right: 0;
+    }
+
+    .item-total {
+        text-align: left;
+        width: 100%;
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    #checkout-btn {
+        width: 100%;
+    }
+}
+
+.cart-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-summary {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#checkout-btn,
+#continue-shopping-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 5px;
+}
+
+#checkout-btn:hover,
+#continue-shopping-btn:hover {
+    background-color: #27ae60;
+}
+
+#checkout-btn:disabled,
+#continue-shopping-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+footer {
+    background-color: #27ae60;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

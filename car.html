@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車 | Boolin Store</title>
+    <link rel="stylesheet" href="car.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Boolin Store</h1>
+        </div>
+    </header>
+
+    <main class="cart-container">
+        <h2>購物車</h2>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="select-all"> 全選</th>
+                    <th>商品</th>
+                    <th>規格</th>
+                    <th>單價</th>
+                    <th>數量</th>
+                    <th>小計</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <p>總金額：<span id="total-amount">$0</span></p>
+            <div class="cart-buttons">
+                <button id="continue-shopping-btn">繼續選購</button>
+                <a href="checkout.html"><button id="checkout-btn" disabled>去結帳</button></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Boolin. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartItemsContainer = document.getElementById("cart-items");
+            const totalAmountElement = document.getElementById("total-amount");
+            const checkoutButton = document.getElementById("checkout-btn");
+            const continueShoppingButton = document.getElementById("continue-shopping-btn");
+
+            // 渲染購物車
+            function renderCart() {
+                cartItemsContainer.innerHTML = "";
+                let totalAmount = 0;
+
+                cart.forEach(function (item, index) {
+                    const row = document.createElement("tr");
+
+                    const subtotal = (item.price * item.quantity).toFixed(0); // 移除小數點
+
+                    row.innerHTML = `
+                        <td><input type="checkbox" class="select-item" data-index="${index}"></td>
+                        <td>${item.name}</td>
+                        <td>${item.spec}</td>
+                        <td>${item.price}</td>
+                        <td>
+                            <input type="number" class="quantity" value="${item.quantity}" min="1" data-index="${index}">
+                        </td>
+                        <td class="subtotal">${subtotal}</td>
+                        <td><button class="remove-item" data-index="${index}">刪除</button></td>
+                    `;
+
+                    cartItemsContainer.appendChild(row);
+                    totalAmount += parseFloat(subtotal);
+                });
+
+                totalAmountElement.textContent = `$${totalAmount.toFixed(0)}`;
+
+                checkoutButton.disabled = cart.length === 0;
+            }
+
+            // 繼續選購按鈕
+            continueShoppingButton.addEventListener("click", function () {
+                window.location.href = "boolin.html";
+            });
+
+            // 監聽數量變動
+            cartItemsContainer.addEventListener("input", function (event) {
+                if (event.target.classList.contains("quantity")) {
+                    const index = event.target.getAttribute("data-index");
+                    const newQuantity = parseInt(event.target.value);
+
+                    if (newQuantity > 0) {
+                        cart[index].quantity = newQuantity;
+                        localStorage.setItem("cart", JSON.stringify(cart)); // 更新 localStorage
+                        renderCart(); // 重新渲染購物車
+                    }
+                }
+            });
+
+            // 監聽刪除按鈕
+            cartItemsContainer.addEventListener("click", function (event) {
+                if (event.target.classList.contains("remove-item")) {
+                    const index = event.target.getAttribute("data-index");
+                    cart.splice(index, 1); // 刪除商品
+                    localStorage.setItem("cart", JSON.stringify(cart)); // 更新 localStorage
+                    renderCart(); // 重新渲染購物車
+                }
+            });
+
+            // 全選功能
+            document.getElementById("select-all").addEventListener("change", function (event) {
+                const isChecked = event.target.checked;
+                document.querySelectorAll(".select-item").forEach(function (checkbox) {
+                    checkbox.checked = isChecked;
+                });
+            });
+
+            // 初始化渲染購物車
+            renderCart();
+        });
+    </script>
+</body>
+</html>
